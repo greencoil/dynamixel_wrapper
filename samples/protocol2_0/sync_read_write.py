@@ -149,10 +149,15 @@ while 1:
         break
 
     # Allocate goal position value into byte array
-    param_goal_position = [DXL_LOBYTE(DXL_LOWORD(dxl_goal_position[index])), DXL_HIBYTE(DXL_LOWORD(dxl_goal_position[index])), DXL_LOBYTE(DXL_HIWORD(dxl_goal_position[index])), DXL_HIBYTE(DXL_HIWORD(dxl_goal_position[index]))]
+    param_goal_position = [
+        DXL_LOBYTE(DXL_LOWORD(dxl_goal_position[index])),
+        DXL_HIBYTE(DXL_LOWORD(dxl_goal_position[index])),
+        DXL_LOBYTE(DXL_HIWORD(dxl_goal_position[index])),
+        DXL_HIBYTE(DXL_HIWORD(dxl_goal_position[index]))]
 
     # Add Dynamixel#1 goal position value to the Syncwrite parameter storage
-    dxl_addparam_result = groupSyncWrite.addParam(DXL1_ID, param_goal_position)
+    dxl_addparam_result = groupSyncWrite.addParam(
+        DXL1_ID, param_goal_position)
     if dxl_addparam_result != True:
         print("[ID:%03d] groupSyncWrite addparam failed" % DXL1_ID)
         quit()
